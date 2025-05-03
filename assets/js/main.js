@@ -261,7 +261,7 @@ const portfolioData = [
   },
 ];
 
-const container = document.querySelector(".isotope-container");
+const containers = document.querySelector(".isotope-container");
 
 portfolioData.forEach((item) => {
   const div = document.createElement("div");
@@ -286,5 +286,109 @@ portfolioData.forEach((item) => {
         </div>
       </div>
     `;
-  container.appendChild(div);
+  containers.appendChild(div);
+});
+
+const testi = [
+  {
+    id: 1,
+    name: "Antony Saul Rombe",
+    job: "Pebisnis",
+    foto: "5.png",
+    pesan:
+      "Pelayanan dari Zeetech IT Solution sangat profesional, instalasi jaringan di kantor kami berjalan cepat dan rapi!",
+  },
+  {
+    id: 2,
+    name: "Lisa Tandiayu",
+    job: "Pebisnis",
+    foto: "7.png",
+    pesan:
+      "Kami sangat puas dengan hasil web custom landing page yang dibuat oleh Zeetech—desainnya menarik dan sesuai dengan kebutuhan bisnis kami.!",
+  },
+  {
+    id: 3,
+    name: "M. Yusuf Mapparasessa",
+    job: "Pebisnis",
+    foto: "6.png",
+    pesan:
+      "Pembuatan company profile digital oleh tim Zeetech sangat membantu memperkuat citra perusahaan kami di dunia online.",
+  },
+  {
+    id: 4,
+    name: "Agung",
+    job: "Dosen ",
+    foto: "8.png",
+    pesan:
+      "Kami sangat terbantu dengan aplikasi kepuasan alumni yang dibuat oleh Zeetech IT Solution. Tim mereka sangat profesional dalam memahami kebutuhan kami dan menghasilkan aplikasi yang mudah digunakan, efektif, dan tepat sasaran.",
+  },
+  {
+    id: 5,
+    name: "Dedi Sudadang Infolahtadam",
+    job: "Infolahtadam Hasanuddin Makassar",
+    foto: "8.png",
+    pesan:
+      "Kami sangat puas dengan aplikasi arsip digital yang dikembangkan oleh Zeetech IT Solution. Aplikasi ini mempermudah kami dalam mengelola arsip secara digital.",
+  },
+];
+
+const container = document.getElementById("testimonials-container");
+
+testi.forEach((item) => {
+  const slide = document.createElement("div");
+  slide.classList.add("swiper-slide");
+
+  slide.innerHTML = `
+      <div class="testimonial-item">
+        <img src="assets/img/testimonials/${
+          item.foto
+        }" class="testimonial-img" alt="" />
+        <h3>${item.name || "Tanpa Nama"}</h3>
+        <h4>${item.job}</h4>
+        <div class="stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p>
+          <i class="bi bi-quote quote-icon-left"></i>
+          <span>${item.pesan}</span>
+          <i class="bi bi-quote quote-icon-right"></i>
+        </p>
+      </div>
+    `;
+
+  container.appendChild(slide);
+});
+
+// Inisialisasi Swiper setelah elemen sudah masuk DOM
+const swiper = new Swiper(".mySwiper", {
+  loop: true,
+  speed: 600,
+  autoplay: {
+    delay: 5000,
+  },
+  slidesPerView: "auto",
+  spaceBetween: 40,
+  pagination: {
+    el: ".swiper-pagination",
+    type: "bullets",
+    clickable: true,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+    },
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 10,
+    },
+  },
 });
